@@ -10,11 +10,19 @@ class HomePage extends StatelessWidget {
         body: _body());
   }
 
-  _body() => Container(
-        color: Colors.white,
-        child: Center(
-          child: _text(),
-        ),
+  _body() => Container(color: Colors.white, child: _wholeScreenImage());
+
+  _wholeScreenImage() => SizedBox.expand(
+        child: _img(),
+      );
+
+  _centeredImage() => Center(
+        child: _img(),
+      );
+
+  _img() => Image.network(
+        'https://uconn-today-universityofconn.netdna-ssl.com/wp-content/uploads/2013/04/husky_qa.jpg.jpeg',
+        fit: BoxFit.cover,
       );
 
   _text() => Text(
@@ -28,4 +36,17 @@ class HomePage extends StatelessWidget {
             decorationColor: Colors.red,
             decorationStyle: TextDecorationStyle.wavy),
       );
+
+  _button() => RaisedButton(
+    color: Colors.blueGrey,
+    child: Text(
+      'OK',
+      style: TextStyle(
+        color: Colors.white
+      ),
+    ),
+    onPressed: _onClickOk,
+  );
+
+  _onClickOk() => print('ok');
 }
