@@ -10,7 +10,17 @@ class HomePage extends StatelessWidget {
         body: _body());
   }
 
-  _body() => Container(color: Colors.white, child: _wholeScreenImage());
+  _body() => Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _text(),
+            _img(),
+            _button()
+          ],
+        )
+      );
 
   _wholeScreenImage() => SizedBox.expand(
         child: _img(),
@@ -38,15 +48,13 @@ class HomePage extends StatelessWidget {
       );
 
   _button() => RaisedButton(
-    color: Colors.blueGrey,
-    child: Text(
-      'OK',
-      style: TextStyle(
-        color: Colors.white
-      ),
-    ),
-    onPressed: _onClickOk,
-  );
+        color: Colors.blueGrey,
+        child: Text(
+          'OK',
+          style: TextStyle(color: Colors.white),
+        ),
+        onPressed: _onClickOk,
+      );
 
   _onClickOk() => print('ok');
 }
