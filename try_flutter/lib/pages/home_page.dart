@@ -11,30 +11,34 @@ class HomePage extends StatelessWidget {
   }
 
   _body() => Container(
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _text(),
-          _carousel(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _button('ListView'),
-              _button('Page 2'),
-              _button('Page 3'),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _button('Snack'),
-              _button('Dialog'),
-              _button('Toast'),
-            ],
-          ),
-        ],
-      ));
+    padding: const EdgeInsets.all(16.0),
+    color: Colors.red,
+    child: Container(
+        color: Colors.white70,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _text(),
+            _carousel(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _button('ListView'),
+                _button('Page 2'),
+                _button('Page 3'),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _button('Snack'),
+                _button('Dialog'),
+                _button('Toast'),
+              ],
+            ),
+          ],
+        )),
+  );
 
   _carousel() => Container(
         margin: EdgeInsets.all(20),
