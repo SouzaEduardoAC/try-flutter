@@ -21,40 +21,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             _text(),
             _carousel(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                BlueButton(
-                  'ListView',
-                  onPressed: () => _onClickNavigator(context, ListViewPage()),
-                ),
-                BlueButton(
-                  'Grid View',
-                  onPressed: () => _onClickNavigator(context, GridViewPage()),
-                ),
-                BlueButton(
-                  'Image View',
-                  onPressed: () => _onClickNavigator(context, ImageViewPage()),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                BlueButton(
-                  'Snack',
-                  color: Colors.red,
-                ),
-                BlueButton(
-                  'Dialog',
-                  color: Colors.red,
-                ),
-                BlueButton(
-                  'Toast',
-                  color: Colors.red,
-                ),
-              ],
-            ),
+            _buttons(),
           ],
         ),
       );
@@ -108,5 +75,56 @@ class HomePage extends StatelessWidget {
   void _onClickNavigator(BuildContext context, Widget page) async {
     String capturedValue = await push(context, page);
     print(' >> $capturedValue');
+  }
+
+  _onClickSnack(BuildContext context) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text('Snack bar YEY'),
+    ));
+  }
+
+  _buttons() {
+    return Builder(
+      builder: (BuildContext context) {
+        return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton(
+                  'ListView',
+                  onPressed: () => _onClickNavigator(context, ListViewPage()),
+                ),
+                BlueButton(
+                  'Grid View',
+                  onPressed: () => _onClickNavigator(context, GridViewPage()),
+                ),
+                BlueButton(
+                  'Image View',
+                  onPressed: () => _onClickNavigator(context, ImageViewPage()),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton(
+                  'Snack',
+                  onPressed: () => _onClickSnack(context),
+                ),
+                BlueButton(
+                  'Dialog',
+                  color: Colors.red,
+                ),
+                BlueButton(
+                  'Toast',
+                  color: Colors.red,
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 }
