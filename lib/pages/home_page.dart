@@ -80,6 +80,11 @@ class HomePage extends StatelessWidget {
   _onClickSnack(BuildContext context) {
     Scaffold.of(context).showSnackBar(SnackBar(
       content: Text('Snack bar YEY'),
+      action: SnackBarAction(
+        label: "OK",
+        textColor: Colors.yellow,
+        onPressed: () => {},
+      ),
     ));
   }
 
