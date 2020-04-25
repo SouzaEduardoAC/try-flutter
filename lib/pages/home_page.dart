@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tryflutter/pages/grid_view.dart';
 import 'package:tryflutter/pages/image_view.dart';
 import 'package:tryflutter/pages/list_view.dart';
@@ -123,7 +124,7 @@ class HomePage extends StatelessWidget {
                 ),
                 BlueButton(
                   'Toast',
-                  color: Colors.red,
+                  onPressed: () => _onClickToast(),
                 ),
               ],
             ),
@@ -159,6 +160,18 @@ class HomePage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: "Toast example!",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0
     );
   }
 }
