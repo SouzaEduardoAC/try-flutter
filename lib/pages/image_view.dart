@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-
-class Dog {
-  String nome;
-  String foto;
-
-  Dog(this.nome, this.foto);
-}
+import 'package:tryflutter/pages/dog_page.dart';
+import 'package:tryflutter/utils/dog.dart';
+import 'package:tryflutter/utils/nav.dart';
 
 class ImageViewPage extends StatefulWidget {
   @override
@@ -14,14 +10,19 @@ class ImageViewPage extends StatefulWidget {
 
 class _ImageViewPageState extends State<ImageViewPage> {
   bool _gridView = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('List View Page'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: () => setState(() => _gridView = false)),
-          IconButton(icon: Icon(Icons.grid_on), onPressed: () => setState(() => _gridView = true)),
+          IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () => setState(() => _gridView = false)),
+          IconButton(
+              icon: Icon(Icons.grid_on),
+              onPressed: () => setState(() => _gridView = true)),
         ],
       ),
       body: _body(context),
@@ -64,27 +65,30 @@ class _ImageViewPageState extends State<ImageViewPage> {
     }
   }
 
-  Stack _itemView(int index) {
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        _img(_dogs[index].foto),
-        Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.black45,
-                  borderRadius: BorderRadius.circular(8)),
-              padding: EdgeInsets.all(8),
-              child: Text(
-                _dogs[index].nome,
-                style: TextStyle(
-                  fontSize: 26,
-                  color: Colors.white,
+  _itemView(int index) {
+    return GestureDetector(
+      onTap: () => push(context, DogPage(_dogs[index])),
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          _img(_dogs[index].foto),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.black45,
+                    borderRadius: BorderRadius.circular(8)),
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  _dogs[index].nome,
+                  style: TextStyle(
+                    fontSize: 26,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            )),
-      ],
+              )),
+        ],
+      ),
     );
   }
 

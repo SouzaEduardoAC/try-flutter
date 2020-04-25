@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-
-class Dog {
-  String nome;
-  String foto;
-
-  Dog(this.nome, this.foto);
-}
+import 'package:tryflutter/utils/dog.dart';
 
 class GridViewPage extends StatelessWidget {
   @override
