@@ -119,7 +119,7 @@ class HomePage extends StatelessWidget {
                 ),
                 BlueButton(
                   'Dialog',
-                  color: Colors.red,
+                  onPressed: () => _onClickDialog(context),
                 ),
                 BlueButton(
                   'Toast',
@@ -128,6 +128,35 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ],
+        );
+      },
+    );
+  }
+
+  _onClickDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // disable actions outside the dialog
+      builder: (context) {
+        return WillPopScope(
+          onWillPop: () async => false, // disable action on return button from android
+          child: AlertDialog(
+            title: Text('YEEEY Dialog'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Cancelar'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              FlatButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
         );
       },
     );
