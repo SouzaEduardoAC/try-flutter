@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tryflutter/pages/list_view.dart';
+import 'package:tryflutter/widgets/blue_button.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -20,18 +21,18 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _button(context, 'ListView',
-                    () => _onClickNavigator(context, ListViewPage())),
-                _button(context, 'Page 2', _onClickPage2),
-                _button(context, 'Page 3', _onClickPage3),
+                BlueButton('ListView',
+                    onPressed: () => _onClickNavigator(context, ListViewPage())),
+                BlueButton('Page 2'),
+                BlueButton('Page 3'),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _button(context, 'Snack', _onClickSnack),
-                _button(context, 'Dialog', _onClickDialog),
-                _button(context, 'Toast', _onClickToast),
+                BlueButton('Snack'),
+                BlueButton('Dialog'),
+                BlueButton('Toast'),
               ],
             ),
           ],
@@ -82,16 +83,6 @@ class HomePage extends StatelessWidget {
             decoration: TextDecoration.underline,
             decorationColor: Colors.red,
             decorationStyle: TextDecorationStyle.wavy),
-      );
-
-  _button(BuildContext context, String text, Function onPressed) =>
-      RaisedButton(
-        color: Colors.blueGrey,
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.white),
-        ),
-        onPressed: onPressed,
       );
 
   void _onClickNavigator(BuildContext context, Widget page) async {

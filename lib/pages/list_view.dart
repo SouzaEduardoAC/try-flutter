@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tryflutter/widgets/blue_button.dart';
 
 class ListViewPage extends StatelessWidget {
   @override
@@ -12,15 +13,9 @@ class ListViewPage extends StatelessWidget {
   }
 
   _body(BuildContext context) {
-    return Center(
-      child: RaisedButton(
-        color: Colors.blueGrey,
-        child: Text(
-          "Voltar",
-          style: TextStyle(color: Colors.white),
-        ),
-        onPressed: () => _onClickVoltar(context),
-      ),
+    return BlueButton(
+      "voltar",
+      onPressed: () => _onClickVoltar(context),
     );
   }
 
