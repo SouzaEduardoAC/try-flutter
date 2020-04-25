@@ -10,15 +10,34 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Hello Flutter'),
-        ),
-        body: _body(context));
+      appBar: AppBar(
+        title: Text('Hello Flutter'),
+      ),
+      body: _body(context),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () => _onClockFab(),
+          ),
+          SizedBox(
+            width: 8,
+            height: 8,
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.favorite_border),
+            onPressed: () => _onClockFab(),
+          ),
+        ],
+      ),
+    );
   }
 
   _body(BuildContext context) => Container(
+        padding: EdgeInsets.only(top: 16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             _text(),
             _carousel(),
@@ -140,7 +159,8 @@ class HomePage extends StatelessWidget {
       barrierDismissible: false, // disable actions outside the dialog
       builder: (context) {
         return WillPopScope(
-          onWillPop: () async => false, // disable action on return button from android
+          onWillPop: () async => false,
+          // disable action on return button from android
           child: AlertDialog(
             title: Text('YEEEY Dialog'),
             actions: <Widget>[
@@ -171,7 +191,10 @@ class HomePage extends StatelessWidget {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.green,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
+  }
+
+  _onClockFab() {
+    print('Add');
   }
 }
