@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class BlueButton extends StatelessWidget {
-  String text;
-  Function onPressed;
+  final String text;
+  final Function onPressed;
+  final Color color;
 
-  BlueButton(this.text, {this.onPressed});
+  BlueButton(this.text, {this.onPressed, this.color = Colors.blue});
 
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      color: Colors.blue,
+      color: color,
       child: Text(
         text,
         style: TextStyle(

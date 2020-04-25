@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tryflutter/pages/list_view.dart';
+import 'package:tryflutter/utils/nav.dart';
 import 'package:tryflutter/widgets/blue_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,8 +22,10 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                BlueButton('ListView',
-                    onPressed: () => _onClickNavigator(context, ListViewPage())),
+                BlueButton(
+                  'ListView',
+                  onPressed: () => _onClickNavigator(context, ListViewPage()),
+                ),
                 BlueButton('Page 2'),
                 BlueButton('Page 3'),
               ],
@@ -30,9 +33,18 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                BlueButton('Snack'),
-                BlueButton('Dialog'),
-                BlueButton('Toast'),
+                BlueButton(
+                  'Snack',
+                  color: Colors.red,
+                ),
+                BlueButton(
+                  'Dialog',
+                  color: Colors.red,
+                ),
+                BlueButton(
+                  'Toast',
+                  color: Colors.red,
+                ),
               ],
             ),
           ],
@@ -86,12 +98,10 @@ class HomePage extends StatelessWidget {
       );
 
   void _onClickNavigator(BuildContext context, Widget page) async {
-    String capturedValue = await Navigator.push(context,
-        MaterialPageRoute(builder: (BuildContext context) {
-      return page;
-    }));
+    String capturedValue = await push(context, page);
     print(' >> $capturedValue');
   }
+
 
   _onClickListView() {}
 
