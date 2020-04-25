@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tryflutter/pages/grid_view.dart';
+import 'package:tryflutter/pages/image_view.dart';
 import 'package:tryflutter/pages/list_view.dart';
 import 'package:tryflutter/utils/nav.dart';
 import 'package:tryflutter/widgets/blue_button.dart';
@@ -26,8 +28,14 @@ class HomePage extends StatelessWidget {
                   'ListView',
                   onPressed: () => _onClickNavigator(context, ListViewPage()),
                 ),
-                BlueButton('Page 2'),
-                BlueButton('Page 3'),
+                BlueButton(
+                  'Grid View',
+                  onPressed: () => _onClickNavigator(context, GridViewPage()),
+                ),
+                BlueButton(
+                  'Image View',
+                  onPressed: () => _onClickNavigator(context, ImageViewPage()),
+                ),
               ],
             ),
             Row(
@@ -101,17 +109,4 @@ class HomePage extends StatelessWidget {
     String capturedValue = await push(context, page);
     print(' >> $capturedValue');
   }
-
-
-  _onClickListView() {}
-
-  _onClickPage2() {}
-
-  _onClickPage3() {}
-
-  _onClickSnack() {}
-
-  _onClickDialog() {}
-
-  _onClickToast() {}
 }

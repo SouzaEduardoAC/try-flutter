@@ -7,12 +7,16 @@ class Dog {
   Dog(this.nome, this.foto);
 }
 
-class ListViewPage extends StatelessWidget {
+class GridViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('List View Page'),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.list), onPressed: () => print("Lista")),
+          IconButton(icon: Icon(Icons.grid_on), onPressed: () => print("Grid")),
+        ],
       ),
       body: _body(context),
     );
@@ -34,9 +38,9 @@ class ListViewPage extends StatelessWidget {
   ];
 
   _body(BuildContext context) {
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemCount: _dogs.length,
-      itemExtent: 300,
       itemBuilder: (context, index) {
         // return _img(_dogs[index].foto); Example 1
         return Stack(
@@ -47,8 +51,9 @@ class ListViewPage extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Container(
                   decoration: BoxDecoration(
-                      color: Colors.black45,
-                      borderRadius: BorderRadius.circular(8)),
+                      color: Colors.black45 ,
+                      borderRadius: BorderRadius.circular(8)
+                  ),
                   padding: EdgeInsets.all(8),
                   child: Text(
                     _dogs[index].nome,
@@ -65,7 +70,8 @@ class ListViewPage extends StatelessWidget {
   }
 
   _img(String imgPath) => Image.network(
-        imgPath,
-        fit: BoxFit.cover,
-      );
+    imgPath,
+    fit: BoxFit.cover,
+  );
+
 }
