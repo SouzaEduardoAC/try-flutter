@@ -10,30 +10,41 @@ import 'package:tryflutter/widgets/nav_drawer.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Hello Flutter'),
-      ),
-      drawer: DrawerList(
-
-      ),
-      body: _body(context),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () => _onClockFab(),
-          ),
-          SizedBox(
-            width: 8,
-            height: 8,
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.favorite_border),
-            onPressed: () => _onClockFab(),
-          ),
-        ],
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Hello Flutter'),
+          bottom: TabBar(tabs: [
+            Tab(
+              text: 'Tab 1',
+            ),
+            Tab(
+              text: 'Tab 2',
+            ),
+          ]),
+        ),
+        drawer: DrawerList(),
+        body: TabBarView(
+          children: <Widget>[_body(context), Container(color: Colors.yellow,)],
+        ),
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () => _onClockFab(),
+            ),
+            SizedBox(
+              width: 8,
+              height: 8,
+            ),
+            FloatingActionButton(
+              child: Icon(Icons.favorite_border),
+              onPressed: () => _onClockFab(),
+            ),
+          ],
+        ),
       ),
     );
   }
