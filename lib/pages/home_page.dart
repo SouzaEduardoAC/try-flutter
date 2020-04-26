@@ -5,6 +5,7 @@ import 'package:tryflutter/pages/image_view.dart';
 import 'package:tryflutter/pages/list_view.dart';
 import 'package:tryflutter/utils/nav.dart';
 import 'package:tryflutter/widgets/blue_button.dart';
+import 'package:tryflutter/widgets/nav_drawer.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,6 +13,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Hello Flutter'),
+      ),
+      drawer: DrawerList(
+
       ),
       body: _body(context),
       floatingActionButton: Row(
